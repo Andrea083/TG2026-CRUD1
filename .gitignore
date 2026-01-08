@@ -1,0 +1,27 @@
+# Arquivos compilados e de build
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build-*.log
+
+# Arquivos de IDE (IntelliJ)
+.idea/
+*.iml
+*.iws
+
+# Arquivos de IDE (Eclipse)
+.classpath
+.project
+.settings/
+
+# Arquivos de Log
+*.log
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+
