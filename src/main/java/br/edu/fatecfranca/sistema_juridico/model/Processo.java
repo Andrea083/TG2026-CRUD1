@@ -34,4 +34,8 @@ public class Processo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "advogado_id", nullable = false)
+    private Advogado advogado;
 }

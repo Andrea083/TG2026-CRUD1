@@ -27,15 +27,15 @@ public class MovimentacaoService {
     @Autowired
     private MockNLPService mockNLPService;
 
-    public List<Movimentacao> buscarMovimentacoesPorProcesso(Long processoId, String cpfUsuarioLogado) {
+    public List<Movimentacao> buscarMovimentacoesPorProcesso(Long processoId) {
         // Chama o método público de ProcessoService para fazer a verificação.
-        Processo processo = processoService.verificarProprietarioDoProcesso(processoId, cpfUsuarioLogado);
+        Processo processo = processoService.findById(processoId);
         return movimentacaoRepository.findByProcessoId(processo.getId());
     }
 
-    public Movimentacao adicionarMovimentacao(Long processoId, String cpfUsuarioLogado) {
+    public Movimentacao adicionarMovimentacao(Long processoId) {
         // Verificação delegada para o serviço responsável.
-        Processo processo = processoService.verificarProprietarioDoProcesso(processoId, cpfUsuarioLogado);
+        Processo processo = processoService.findById(processoId);
 
         String textoOriginal = mockAASPService.coletarNovaMovimentacao(processo.getNumero());
         String textoTraduzido = mockNLPService.traduzirTexto(textoOriginal);

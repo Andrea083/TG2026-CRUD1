@@ -23,7 +23,7 @@ public class MovimentacaoController {
     @GetMapping("/processo/{processoId}")
     public ResponseEntity<List<Movimentacao>> buscarPorProcesso(@PathVariable Long processoId, Principal principal) {
         String cpf = principal.getName(); // Pega o CPF do usuário logado
-        List<Movimentacao> movimentacoes = movimentacaoService.buscarMovimentacoesPorProcesso(processoId, cpf);
+        List<Movimentacao> movimentacoes = movimentacaoService.buscarMovimentacoesPorProcesso(processoId);
         return ResponseEntity.ok(movimentacoes);
     }
 
@@ -31,7 +31,7 @@ public class MovimentacaoController {
     @PostMapping("/processo/{processoId}")
     public ResponseEntity<Movimentacao> adicionarMovimentacao(@PathVariable Long processoId, Principal principal) {
         String cpf = principal.getName(); // Pega o CPF do usuário logado
-        Movimentacao novaMovimentacao = movimentacaoService.adicionarMovimentacao(processoId, cpf);
+        Movimentacao novaMovimentacao = movimentacaoService.adicionarMovimentacao(processoId);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaMovimentacao);
     }
 }

@@ -37,7 +37,7 @@ public class ProcessoController {
         // as informações do usuário logado.
         String cpfDoUsuarioLogado = principal.getName();
 
-        Processo novoProcesso = processoService.cadastrarProcesso(processo, cpfDoUsuarioLogado);
+        Processo novoProcesso = processoService.cadastrarProcesso(processo);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoProcesso);
     }
 
@@ -49,7 +49,7 @@ public class ProcessoController {
             Principal principal)
     {
         String cpf = principal.getName();
-        Processo processoAtualizado = processoService.atualizarProcesso(id, dadosProcesso, cpf);
+        Processo processoAtualizado = processoService.atualizarProcesso(id, dadosProcesso);
         return ResponseEntity.ok(processoAtualizado);
     }
 
@@ -57,7 +57,7 @@ public class ProcessoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarProcesso(@PathVariable Long id, Principal principal) {
         String cpf = principal.getName();
-        processoService.deletarProcesso(id, cpf);
+        processoService.deletarProcesso(id);
 
         // Retorna uma resposta 204 No Content, que é o padrão para uma
         // operação de DELETE bem-sucedida, indicando que o recurso não existe mais.
