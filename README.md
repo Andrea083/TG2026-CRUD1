@@ -4,17 +4,39 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3.1-green)
 ![Maven](https://img.shields.io/badge/Maven-4.0.0-red)
 
-API RESTful para gestão de processos jurídicos, desenvolvida como um projeto de estudo para aplicar conceitos de backend com Java e Spring Framework.
+API RESTful para acompanhamento de processos jurídicos, desenvolvida como um projeto de estudo para aplicar conceitos de backend com Java e Spring Framework.
 
 ## 🎯 Objetivo do Projeto
 
-O objetivo desta API é fornecer um backend robusto para uma aplicação (web ou mobile) focada em advogados e seus clientes. Ela permite a centralização, controle e consulta de informações sobre processos judiciais, garantindo que os dados sejam acessados e manipulados de forma segura e eficiente.
+O objetivo desta API é fornecer um backend robusto para uma aplicação (web ou mobile) focada em advogados e seus clientes. Ela permite a centralização, controle e consulta de informações sobre processos judiciais, garantindo que os dados sejam acessados e manipulados de forma segura, eficiente e em linguagem não jurídica para fácil entendimento.
 
-## ✨ Funcionalidades
+## Funcionalidades Implementadas
 
-- **CRUD Completo de Processos:** Crie, leia, atualize e delete registros de processos jurídicos.
-- **Validação de Dados:** Garante a integridade dos dados recebidos pela API (ex: campos obrigatórios, formato de dados).
-- **Segurança Simples:** Implementa uma regra de negócio onde um cliente só pode visualizar os detalhes dos processos em seu nome.
+- ✅ **CRUD de Processos**: API completa para Criar, Ler, Atualizar e Deletar processos.
+- ✅ **Busca Avançada**: Capacidade de buscar processos associados a um cliente específico através do CPF.
+- ✅ **Segurança Baseada em Proprietário**: Implementação de regras de negócio onde um advogado só pode visualizar, alterar ou excluir os processos que lhe pertencem.
+- ✅ **Gerenciamento de Movimentações**: Endpoints para listar e adicionar novas movimentações a um processo existente, respeitando as regras de propriedade do processo.
+
+## Endpoints da API
+
+Abaixo está a lista de endpoints disponíveis e como utilizá-los.
+
+### 1. Processos (`/processos`)
+
+| Funcionalidade      | Método HTTP | Endpoint                  | Descrição                                                    |
+| :------------------ | :---------: | :------------------------ | :----------------------------------------------------------- |
+| Cadastrar Processo  | `POST`      | `/processos`              | Cria um novo processo associado ao advogado autenticado.     |
+| Buscar por ID       | `GET`       | `/processos/{id}`         | Busca um processo específico. Apenas o advogado dono tem acesso. |
+| Buscar por Cliente  | `GET`       | `/processos/cliente/{cpf}`  | Lista todos os processos de um cliente pelo CPF.             |
+| Atualizar Processo  | `PUT`       | `/processos/{id}`         | Atualiza um processo. Apenas o advogado dono tem acesso.     |
+| Deletar Processo    | `DELETE`    | `/processos/{id}`         | Deleta um processo. Apenas o advogado dono tem acesso.       |
+
+### 2. Movimentações (`/movimentacoes`)
+
+| Funcionalidade        | Método HTTP | Endpoint                         | Descrição                                                         |
+| :-------------------- | :---------: | :------------------------------- | :---------------------------------------------------------------- |
+| Listar Movimentações  | `GET`       | `/movimentacoes/processo/{id}` | Lista todas as movimentações de um processo específico.           |
+| Adicionar Movimentação| `POST`      | `/movimentacoes/processo/{id}` | Adiciona uma nova movimentação a um processo. Apenas o advogado dono do processo pode adicionar. |
 
 ## 🛠️ Tecnologias Utilizadas
 
